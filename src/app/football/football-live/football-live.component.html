@@ -1,0 +1,18 @@
+
+<div *ngFor='let fixture of fixtures'>
+
+  <li>
+      <img  [src]='fixture.homeTeam.logo' 
+      [style.width.px]='imageWidth'
+      [style.margin.px]='imageMargin'/>
+      
+      {{ fixture.homeTeam.team_name }} {{ fixture.goalsHomeTeam }} - {{ fixture.goalsAwayTeam }} {{ fixture.awayTeam.team_name }}
+
+      <img  [src]='fixture.awayTeam.logo' 
+      [style.width.px]='imageWidth'
+      [style.margin.px]='imageMargin'/>
+
+      {{ fixture.elapsed }}
+  </li>
+
+</div>

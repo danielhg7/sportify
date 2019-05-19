@@ -1,3 +1,9 @@
 <p>
   football works!
 </p>
+
+<div *ngFor='let league of leagues'>
+  <img  [src]='league.flag' 
+        [style.width.px]='imageWidth'
+        [style.margin.px]='imageMargin'/> - {{ league.name }}
+</div>
