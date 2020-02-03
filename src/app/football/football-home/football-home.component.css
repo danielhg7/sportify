@@ -1,0 +1,29 @@
+h6{
+    background-color: #0C2869;
+    color: white;
+    border-radius: 6px;
+    padding: 6px;
+}
+
+.row{
+    margin: 0px 0px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+.row:hover{
+    background-color: #3198E1;
+    color: white;
+    font-weight: bold;
+}
+
+.form-control{
+    margin: 11px;
+    width: 97.7%;
+    border-radius: 7px;
+    padding: 7px;
+    font-size: 14px;
+    height: 34px;
+}
+.form-control button{
+    display: none;
+}

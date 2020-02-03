@@ -1,0 +1,35 @@
+<div>
+    <input style="visibility: hidden" id="dateSelector" class="form-control" type="date" [(ngModel)]='formattedDate' (input)="selectDate($event);">
+</div>
+
+<div *ngFor='let matchSet of matchSets' style="margin: 10px;">
+
+  <h6> {{ matchSet.countryName }} - {{ matchSet.leagueName }} </h6>
+
+  <div class="row" *ngFor='let match of matchSet.matches' style="font-size: 14px;" (click)="getMatch(match)">
+      <div class="col-md-1">
+          {{ match.time }}
+      </div>
+
+      <div id="homeTeam" class="col-md-4" style="text-align:right;">
+          {{ match.hometeamName }}
+      </div>
+
+      <div class="col-md-2" style="text-align:center;">
+           {{ match.hometeamScore }} - {{ match.awayteamScore }} 
+      </div>
+
+      <div id="homeTeam" class="col-md-4">
+          {{ match.awayteamName }}
+      </div>
+  
+      <div class="col-md-1" style="text-align:right;" *ngIf="inactiveMatchArray.indexOf(match.status) !== -1 && match.status != ''">
+          {{ match.status }}
+      </div>
+
+      <div class="col-md-1" style="text-align:right; padding: 0px 10px;" *ngIf="inactiveMatchArray.indexOf(match.status) === -1 && match.status != ''">
+        <img src="http://cdn3.livescore.com/web2/img/flash.gif" /> {{ match.status }}
+      </div>
+  </div>
+  
+</div>

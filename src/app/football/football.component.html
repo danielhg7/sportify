@@ -1,9 +1,12 @@
-<p>
-  football works!
-</p>
+<div class="row" style="margin:0 !important">
+  <div class="sidebar col-md-2"> 
+    <a *ngFor='let country of countries; let i = index;'
+      (click)="selectTab($event); linkRoute(country);" [ngClass]="{'selected': i == 0}">
+      {{ country.name | titlecase }}
+    </a>
+  </div>
 
-<div *ngFor='let league of leagues'>
-  <img  [src]='league.flag' 
-        [style.width.px]='imageWidth'
-        [style.margin.px]='imageMargin'/> - {{ league.name }}
+  <div class="content col-md-10">
+      <router-outlet></router-outlet>
+  </div>
 </div>

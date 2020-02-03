@@ -1,7 +1,9 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from "rxjs";
 import { catchError, tap } from 'rxjs/operators';
+import { IMatch } from "./model/match";
+import { IMatchSet } from "./model/matchSet";
 
 @Injectable({
     providedIn:'root'
@@ -15,15 +17,11 @@ export class FootballService {
 
     constructor(private http: HttpClient) {}
 
-    getAllLeagues(): Observable<any> {
+    getAllCountries(): Observable<any> {
 
-        this.url = 'https://api-football-v1.p.rapidapi.com/v2/leagues';
-
-        let headers: HttpHeaders = new HttpHeaders();
-        headers = headers.append('X-RapidAPI-Host', 'api-football-v1.p.rapidapi.com');
-        headers = headers.append('X-RapidAPI-Key', this.key);
+        this.url = this.baseUrl + 'api/football/countries';
         
-        return this.http.get<any>(this.url, {headers: headers}).pipe(
+        return this.http.get<any>(this.url).pipe(
             tap(data => console.log('All: ' + JSON.stringify(data))),
             catchError(this.handleError)
         );
@@ -44,9 +42,21 @@ export class FootballService {
 
     getFootballLiveFixtures(): Observable<any> {
 
-        this.url = this.baseUrl + 'api/football/live';
+        this.url = this.baseUrl + 'api/football/fixtures/live';
         
         return this.http.get<any>(this.url).pipe(
+            tap(data => console.log('All: ' + JSON.stringify(data))),
+            catchError(this.handleError)
+        );
+    }
+
+    getFootballFixturesByDate(formattedDate: string): Observable<any> {
+
+        let httpParams = new HttpParams().set('date', formattedDate);
+
+        this.url = this.baseUrl + 'api/football/fixtures/date';
+        
+        return this.http.get<IMatchSet[]>(this.url, { params: httpParams }).pipe(
             tap(data => console.log('All: ' + JSON.stringify(data))),
             catchError(this.handleError)
         );

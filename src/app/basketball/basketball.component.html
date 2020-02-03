@@ -1,3 +1,10 @@
-<p>
-  basketball works!
-</p>
+<div class="sidebar">
+    <a class="active" [routerLink]="['/football/home']">Home</a>
+    <a [routerLink]="['/football/live']">Live</a>
+    <a href="contact.asp">NBA</a>
+    <a href="about.asp">Euroleague</a>
+  </div>
+  
+  <div class="content">
+      <router-outlet></router-outlet>
+  </div>

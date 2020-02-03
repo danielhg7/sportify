@@ -1,7 +1,7 @@
 
-<div *ngFor='let fixture of fixtures'>
+<ul style="list-style-type:none">
 
-  <li>
+  <li *ngFor='let fixture of fixtures'>
       <img  [src]='fixture.homeTeam.logo' 
       [style.width.px]='imageWidth'
       [style.margin.px]='imageMargin'/>
@@ -15,4 +15,4 @@
       {{ fixture.elapsed }}
   </li>
 
-</div>
+</ul>
